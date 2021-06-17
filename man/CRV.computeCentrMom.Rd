@@ -20,10 +20,7 @@ V.a. continua construita cu ajutorul ContinueRV::CRV.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-  \item{mom_1}
-  \item{mom_2}
-  \item{mom_3}
-  \item{mom_4}
+  \item{mom_{1:4}}
 }
 \references{
 %% ~put references to the literature/web site here ~
