@@ -1,25 +1,46 @@
 \name{isPDF}
 \alias{isPDF}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 isPDF
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Determina daca o functie nenula pe un interval (_lower_bound, _upper_bound)
+este sau nu densitate de probabilitate.
 }
 \usage{
-isPDF()
+isPDF(fun, fun.lower, fun.upper)
 }
-%- maybe also 'usage' for other objects documented here.
+\arguments{
+  \item{fun} {
+  Functia.class -: function
+  }
+  \item{fun.lower} {
+  _lower_bound.class -: numeric                                             \cr
+
+  In cazul in care argumentul nu este specificat, acesta ia implicit valoarea -Inf.
+  }
+  \item{fun.upper} {
+  _upper_bound.class -: numeric
+                                                                            \cr
+  In cazul in care argumentul nu este specificat, acesta ia implicit valoarea  Inf.
+  }
+}
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+
+Pentru determinarea proprietatii se verifica urmatoarele:                   \cr
+  1. Functia introdusa trebuie sa fie pozitiva.
+  In cazul in care intervalul pe care functia este nenula = (-Inf, Inf),
+  verificarea are loc pe (-1000, 1000);                                     \cr
+  2. Se verifica daca                                                       \cr
+  \code{integrate(fun, lower = _lower_bouund, upper = _upper_bound) == 1};  \cr
+
+  In cazul in care (1), (2) verifica conditiile, aceasta este declarata ca fiind PDF si functia
+  intoarce valoare \code{T}, altfel \code{F}.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+  \item {
+  (T/F)
+  }
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -37,54 +58,8 @@ isPDF()
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function ()
-{
-    out <- tryCatch({
-        text <- readline("Introdu functia: ")
-        fun.expression = parse(text = text)
-        isPos <- tryCatch({
-            function.deriv <- deriv(fun.expression, "x")
-            f <- function(x) {
-            }
-            body(f) <- function.deriv
-            f.roots <- uniroot(f, lower = -1, upper = 1)$root
-            f.solutions <- f(f.roots)
-        }, warning = function(cons) {
-        }, error = function(cond) {
-            sprintf("Error while computing if function is either positive or negative;\n\n            Positivity/negativity could not be determined!")
-            return(T)
-        })
-        if (isPos) {
-            integrand <- function(x) {
-            }
-            body(integrand) <- fun.expression
-            result <- integrate(integrand, lower = -Inf, upper = Inf)$value
-            if (as.integer(result) == 1) {
-                return(T)
-            }
-            else {
-                return(F)
-            }
-        }
-    }, error = function(cond) {
-        print("Error while parsing text to function")
-        return(F)
-    }, warning = function(cond) {
-    })
-    return(out)
-  }
+isPDF(fun = function(x) {exp(1)**(-x**2/2)})
+isPDF(fun = function(x) {x**2},
+      fun.lower = -2.375,
+      fun.upper =  8.355)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory (show via RShowDoc("KEYWORDS")):
-% \keyword{ ~kwd1 }
-% \keyword{ ~kwd2 }
-% Use only one keyword per line.
-% For non-standard keywords, use \concept instead of \keyword:
-% \concept{ ~cpt1 }
-% \concept{ ~cpt2 }
-% Use only one concept per line.

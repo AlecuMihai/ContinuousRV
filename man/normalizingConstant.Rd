@@ -33,9 +33,9 @@ normalizingConstant(function, _lower_bound, _upper_bound)
 \value{
 \arguments{
   \item{k}{
-  constanta de normalizare
+    constanta de normalizare
+    }
   }
-}
 }
 \references{
 %% ~put references to the literature/web site here ~
