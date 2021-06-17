@@ -1,0 +1,13 @@
+Package: ContinuousRV
+Type: Package
+Title: Create and Manipulate Continue Random Variables
+Version: 0.1.0
+Author@R: c(person("Mihai", "Alecu", email = "alecu.mihai2000@gmail.com", role = "aut"),
+			person("Laurentiu", "Varzan", email = "varzan.laurentiu@gmail.com"),
+			person("Alexandru", "Surdu-Bob", email = "alex.surdubob@gmail.com"),
+			person("Daniel", "Ursu-Balaci", email = "danielursubalaci@gmail.com"))
+Description: Create and Manipulate Continue Random Variables
+License: None
+Encoding: UTF-8
+LazyData: true
+Imports:
