@@ -6,7 +6,7 @@ CRV.computeMargDen
 }
 \description{
 Determina densitatile marginale si conditionate a doua variable aleatoare
-continue (CRV) folosindu-se de densitatea comuna a acestora;
+continue (ContinuousRV::CRV) folosindu-se de densitatea comuna a acestora;
 }
 \usage{
 CRV.computeMargDen(X, Y, commonDensity)
@@ -20,7 +20,7 @@ CRV.computeMargDen(X, Y, commonDensity)
     v.a. continua
   }
   \item{commonDensity}{
-    Densitatea comuna a celor doua v.a. continue.
+    Densitatea comuna a celor doua v.a. continue (functie de doua argumente).
   }
 }
 \details{
@@ -49,10 +49,10 @@ It can be used for exact arithmetic, symbolic math, ASCII pretty printing and tr
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-X <- CRV(fun = function(x) {x}, lo = 0, hi = 1)
-Y <- CRV(fun = function(x) {x}, lo = 0, hi = 2)
+X <- CRV(fun = function(x){(2197/5412) * (x**2 + 3*x + 1)}, lo = 0, hi = 12/13)
+Y <- CRV(fun = function(x) {20000/7708481 * (2 * x**3 - 2)}, lo = 1, hi = 53/10)
 com <- function(x, y) {
-  0.2 * (x + y + 1)
+  x + y
 }
 
 CRV.computeMargDen(X, Y, com)
