@@ -4,19 +4,16 @@
 require(magick)
 library(magick)
 
-fisa <- function() {
-  text = "1"
-  print(text)
-  while (text != "0"){
+CRV.synthesis <- function() {
     cat("\nRegasim urmatoarele repartitii\n1.Uniforma\n2.Exponentiala\n3.Normala\n4.Hi Patrat\n5.Student/T\n6.Surse\n0.Iesire\nAlege una dintre Repartitii: ")
     text <- readline()
     result = switch(
       text,
-      "1" = "img/uniforma.png",
-      "2" = 'img/exponentiala.png',
-      "3" = 'img/normala.png',
-      "4" = 'img/hi-patrat.png',
-      "5" = 'img/student.png',
+      "1" = "uniforma.png",
+      "2" = 'exponentiala.png',
+      "3" = 'normala.png',
+      "4" = 'hi-patrat.png',
+      "5" = 'student.png',
       "6" = cat("Am folosit urmatoarele surse pentru aceste informatii:\n
               http://cs.unitbv.ro/~pascu/stat/Distributii%20continue%20clasice.pdf\n
               http://software.ucv.ro/~cstoica/MSSC/lab%204%20distributii.pdf\n
@@ -28,12 +25,9 @@ fisa <- function() {
               https://www.info.umfcluj.ro/index.php?option=com_k2&view=item&task=download&id=4076_836d9dea9d3c276b0af1baf89b2db214&Itemid=1005&lang=ro\n")
 
     )
-
     if(text == "1" | text == "2" | text == "3" | text == "4" | text == "5")
     {
       img1 <- magick::image_read(paste(result, sep = ""))
       plot(img1)
     }
-  }
 }
-fisa()
